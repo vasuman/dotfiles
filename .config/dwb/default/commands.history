@@ -1,0 +1,11 @@
+adblock_reload_rules
+exit
+open dwb
+local_set user-stylesheet-uri file://$HOME/.config/dwb/stylesheet/foo.css
+https://wiki.archlinux.org/index.php/Dwb
+help
+he
+bmarko
+asdjkaghk
+google
+helpall
