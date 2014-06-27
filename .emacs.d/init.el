@@ -4,7 +4,15 @@
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/") 
                          ("marmalade" . "http://marmalade-repo.org/packages/") 
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
-(defvar my-packages '(cider haskell-mode wrap-region expand-region magit))
+(defvar my-packages '(
+		      cider 
+		      haskell-mode 
+		      wrap-region 
+		      expand-region
+		      magit
+		      go-mode
+		      markdown-mode
+		      ))
 (defun packages-installed-p (ps) (cl-every 'package-installed-p ps))
 (require 'package)
 (package-initialize)
