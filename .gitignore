@@ -1,5 +1,5 @@
 .emacs.d/
 !.emacs.d/init.el
-.vim/
+.vim/bundle/
 *.swp
 *.swo
