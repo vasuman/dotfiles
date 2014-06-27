@@ -1,28 +1,41 @@
 #!/usr/bin/env python2
 
 from os import listdir, symlink
-from os.path import expanduser, abspath, samefile, join, exists
+import os.path as path
 from sys import argv
 
-HOME_DIR = expanduser('~')
-CUR_DIR = abspath('.')
-SELF_PATH = join(CUR_DIR, argv[0])
+HOME_DIR = path.expanduser('~')
+SELF_PATH = path.realpath(__file__)
+CUR_DIR = path.dirname(SELF_PATH)
 
-def main():
-    for f in listdir(CUR_DIR):
-        path = join(CUR_DIR, f)
-        if samefile(path, SELF_PATH):
-            print 'Self, %s' % path
+
+def ln_copy(src, dst, exclude = [], overwrite = False):
+    if path.samefile(src, dst):
+        print 'Samefile, %s and %s' % (src, dst)
+        return
+    print 'Copy linking from, %s to %s' % (src, dst)
+    for f in listdir(src):
+        p = path.join(src, f)
+        if f.startswith('.git'):
+            print 'Git, %s' % p
             continue
-        if f.startswith('.'):
-            print 'Hidden, %s' % path
+        if p in exclude:
+            print 'Excluded %s' % p
             continue
-        link = join(HOME_DIR, '.%s' % f)
-        if not exists(link):
+        link = path.join(dst, '%s' % f)
+        if not path.exists(link):
             print 'Linking, %s' % link
-            symlink(path, link)
+            symlink(p, link)
+        elif overwrite:
+            print 'Overwriting, %s' % link
+        elif path.isdir(link) and path.isdir(p):
+            print 'Dir exists, recurring'
+            ln_copy(p, link, exclude)
         else:
             print 'Existing, %s' % link
+
+def main():
+    ln_copy(CUR_DIR, HOME_DIR, [SELF_PATH])
 
 if __name__ == '__main__':
     main()
