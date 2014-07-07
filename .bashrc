@@ -20,3 +20,7 @@ function unset_proxy() {
 function serve_dir() {
     python2 -m SimpleHTTPServer $1
 }
+
+function pack_textures() {
+    java -cp $HOME/packages/gdx.jar:$HOME/packages/gdx-tools.jar com.badlogic.gdx.tools.texturepacker.TexturePacker $1 $2
+}
