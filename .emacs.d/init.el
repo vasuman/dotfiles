@@ -1,9 +1,6 @@
 (require 'cl-lib)
 
-;; Check and install packages
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/") 
-                         ("marmalade" . "http://marmalade-repo.org/packages/") 
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+;; Packages installed -- add here whenever new package installed
 (defvar my-packages '(
 		      cider 
 		      haskell-mode 
@@ -13,6 +10,12 @@
 		      go-mode
 		      markdown-mode
 		      ))
+
+;; Check and install packages
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/") 
+                         ("marmalade" . "http://marmalade-repo.org/packages/") 
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+
 (defun packages-installed-p (ps) (cl-every 'package-installed-p ps))
 (require 'package)
 (package-initialize)
