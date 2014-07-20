@@ -1,3 +1,4 @@
-g https://www.google.ie/search?output=search&sclient=psy-ab&q=_dwb_search_submit_&oq=&gs_l=&pbx=1
-aw https://w.amazon.com/index.php/Special:Search?title=Special:Search&sid=1403520369&search=_dwb_search_submit_
-w http://en.wikipedia.org/w/index.php?search=_dwb_search_submit_&title=Special:Search
+sp https://startpage.com/do/search?query=_dwb_search_submit_
+ddg https://duckduckgo.com/?q=_dwb_search_submit_
+wp https://www.wikipedia.org/search-redirect.php?family=wikipedia&search=_dwb_search_submit_&language=en&go=Go
+goog https://www.google.co.in/search?output=search&sclient=psy-ab&q=_dwb_search_submit_&oq=&gs_l=&pbx=1
