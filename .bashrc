@@ -1,5 +1,18 @@
 alias l='ls -l --color=yes'
 alias cls='clear'
+
+alias _='sudo'
+
+alias sys='sudo systemctl'
+alias start='sudo systemctl start'
+alias stahp='sudo systemctl stop'
+alias reinit='sudo systemctl restart'
+alias abut='sudo systemctl status'
+
+alias pacs='sudo pacman -S'
+
+alias ssh_proxy='ssh -L3128:localhost:3128'
+
 export EDITOR=vim
 export ANDROID_SDK=/opt/android-sdk
 export PROMPT_COMMAND='prompt_status="$? "; if [[ $prompt_status == "0 " ]]; then prompt_status=; fi; PS1="\[$(tput bold)\]\[$(tput setaf 1)\]$prompt_status\[$(tput setaf 4)\]\u\[$(tput setaf 2)\]@\H \[$(tput setaf 5)\]\W \[$(tput setaf 3)\]\\$ \[$(tput sgr0)\]"'
