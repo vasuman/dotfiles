@@ -2,14 +2,14 @@
 
 ;; Packages installed -- add here whenever new package installed
 (defvar my-packages '(
-		      cider 
-		      haskell-mode 
-		      wrap-region 
-		      expand-region
-		      magit
-		      go-mode
-		      markdown-mode
-		      ))
+              cider 
+              haskell-mode 
+              wrap-region 
+              expand-region
+              magit
+              go-mode
+              markdown-mode
+              ))
 
 ;; Check and install packages
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/") 
@@ -20,13 +20,14 @@
 (require 'package)
 (package-initialize)
 (unless (packages-installed-p my-packages)
-  (package-refresh-contents)
-  (dolist (p my-packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
+ (package-refresh-contents)
+ (dolist (p my-packages)
+  (when (not (package-installed-p p))
+   (package-install p))))
 
 ;; Keybindings
 (global-set-key (kbd "C-=") 'er/expand-region)
+(global-set-key (kbd "C-c g") 'magit-status)
 
 ;; Hooks
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
@@ -52,7 +53,7 @@
 (ido-everywhere t)
 (windmove-default-keybindings 'meta)
 (global-auto-revert-mode 1)
-(set-face-attribute 'default nil :height 150)
+(set-face-attribute 'default nil :font "Terminus" :height 100)
 
 ;; Custom -- don't edit
 (custom-set-variables
@@ -60,7 +61,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (deeper-blue))))
+ '(custom-enabled-themes (quote (deeper-blue)))
+ '(send-mail-function (quote smtpmail-send-it)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
