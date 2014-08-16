@@ -43,3 +43,13 @@ function pack_textures() {
 function start_hotspot() {
     _ hotspot.sh wlp3s0 enp4s0f2 $1 $2
 }
+
+function github_get() {
+    cd $HOME/code/github.com/
+    if [[ ! -d $1 ]]; then
+        mkdir $1
+    fi
+    cd $1
+    git clone https://github.com/$1/$2.git
+    cd $2
+}

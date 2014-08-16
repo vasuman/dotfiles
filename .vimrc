@@ -33,7 +33,7 @@ colorscheme blackboard
 
 set guioptions-=T
 set guioptions-=m
-set guifont=Inconsolata\ 12
+set guifont=terminus\ 11
 set encoding=utf-8
 
 set incsearch
