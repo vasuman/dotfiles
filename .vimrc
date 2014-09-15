@@ -29,7 +29,7 @@ call vundle#end()
 
 filetype plugin indent on
 syntax on
-colorscheme blackboard
+colorscheme darkblue
 
 set guioptions-=T
 set guioptions-=m

@@ -9,6 +9,8 @@ alias stahp='sudo systemctl stop'
 alias reinit='sudo systemctl restart'
 alias abut='sudo systemctl status'
 
+alias .b='source $HOME/.bashrc'
+
 alias pacs='sudo pacman -S'
 alias pacss='pacman -Ss'
 alias pacr='sudo pacman -R'
@@ -19,7 +21,8 @@ export EDITOR=vim
 export ANDROID_SDK=/opt/android-sdk
 export PROMPT_COMMAND='prompt_status="$? "; if [[ $prompt_status == "0 " ]]; then prompt_status=; fi; PS1="\[$(tput bold)\]\[$(tput setaf 1)\]$prompt_status\[$(tput setaf 4)\]\u\[$(tput setaf 2)\]@\H \[$(tput setaf 5)\]\W \[$(tput setaf 3)\]\\$ \[$(tput sgr0)\]"'
 export GOPATH=$HOME/code/go
-export PATH=$PATH:$HOME/.gem/ruby/2.1.0/bin/:$HOME/code/bin/:$ANDROID_SDK/tools/:$ANDROID_SDK/platform-tools/:$GOPATH/bin:$HOME/.cabal/bin/
+export PATH=$PATH:$HOME/.gem/ruby/2.1.0/bin/:$HOME/code/bin/:$ANDROID_SDK/tools/:$ANDROID_SDK/platform-tools/:$GOPATH/bin:$HOME/.cabal/bin/:$HOME/.install/go_appengine
+
 function set_proxy() {
     export http_proxy="http://localhost:3128/"
     export https_proxy="http://localhost:3128/"
@@ -52,4 +55,13 @@ function github_get() {
     cd $1
     git clone https://github.com/$1/$2.git
     cd $2
+}
+
+function blog_deploy() {
+    python2 $HOME/code/glob/generate.py $HOME/Documents/vasuman.github.io/
+    cd $HOME/Documents/vasuman.github.io/ 
+    git add . 
+    git commit -am 'Automated commit' 
+    git push
+    cd -
 }
