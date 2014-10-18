@@ -9,7 +9,7 @@ alias stahp='sudo systemctl stop'
 alias reinit='sudo systemctl restart'
 alias abut='sudo systemctl status'
 
-alias .b='source $HOME/.bashrc'
+alias .eb='$EDITOR $HOME/.bashrc && source $HOME/.bashrc'
 
 alias pacs='sudo pacman -S'
 alias pacss='pacman -Ss'
@@ -50,18 +50,9 @@ function start_hotspot() {
 function github_get() {
     cd $HOME/code/github.com/
     if [[ ! -d $1 ]]; then
-        mkdir $1
+        mkdir -p $1
     fi
     cd $1
     git clone https://github.com/$1/$2.git
     cd $2
-}
-
-function blog_deploy() {
-    python2 $HOME/code/glob/generate.py $HOME/Documents/vasuman.github.io/
-    cd $HOME/Documents/vasuman.github.io/ 
-    git add . 
-    git commit -am 'Automated commit' 
-    git push
-    cd -
 }

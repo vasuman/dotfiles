@@ -29,11 +29,11 @@ call vundle#end()
 
 filetype plugin indent on
 syntax on
-colorscheme darkblue
+colorscheme blackboard
 
 set guioptions-=T
 set guioptions-=m
-set guifont=terminus\ 11
+set guifont=terminus\ 13
 set encoding=utf-8
 
 set incsearch

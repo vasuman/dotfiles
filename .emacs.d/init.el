@@ -58,7 +58,7 @@
 (ido-everywhere t)
 (windmove-default-keybindings 'meta)
 (global-auto-revert-mode 1)
-(set-face-attribute 'default nil :font "Terminus" :height 100)
+(set-face-attribute 'default nil :font "Terminus" :height 160)
 
 ;; Custom -- don't edit
 (custom-set-variables
