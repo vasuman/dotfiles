@@ -13,12 +13,15 @@
 
 ;; Check and install packages
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-						 ("marmalade" . "http://marmalade-repo.org/packages/")
-						 ("melpa" . "http://melpa.milkbox.net/packages/")))
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (defun packages-installed-p (ps) (cl-every 'package-installed-p ps))
+
 (require 'package)
+
 (package-initialize)
+
 (unless (packages-installed-p my-packages)
  (package-refresh-contents)
  (dolist (p my-packages)
@@ -26,16 +29,14 @@
    (package-install p))))
 
 ;; Custom functions
-(defun untabify-buffer (untabify (point-min) (point-max)))
+(defun untabify-buffer () (interactive) (untabify (point-min) (point-max)))
 
 ;; Keybindings
 (global-set-key (kbd "C-=") 'er/expand-region)
-(global-set-key (kbd "C-c g") 'magit-status)
-(global-set-key (kbd "C-c d") 'delete-trailing-whitespace)
-
-;; Hooks
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+(global-set-key (kbd "ESC M-g") 'magit-status)
+(global-set-key (kbd "ESC M-d") 'delete-trailing-whitespace)
+(global-set-key (kbd "ESC M-e") 'eshell)
+(global-set-key (kbd "C-x p") 'previous-multiframe-window)
 
 ;; Preferences
 (setq backup-by-copying t)
@@ -56,20 +57,53 @@
 (tool-bar-mode -1)
 (ido-mode t)
 (ido-everywhere t)
-(windmove-default-keybindings 'meta)
 (global-auto-revert-mode 1)
-(set-face-attribute 'default nil :font "Terminus" :height 160)
+(set-face-attribute 'default nil :font "Terminus" :height 150)
+(set-language-environment "UTF-8")
 
-;; Custom -- don't edit
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (deeper-blue))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; Compile command
+(global-set-key (kbd "C-c C-.") 'recompile)
+
+;; Haskell
+(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+
+;; Apsell
+(setq ispell-program-name "aspell")
+(setq ispell-personal-dictionary "~/.ispell")
+
+;; Golang
+(setq gofmt-command "goimports")
+(add-hook 'before-save-hook #'gofmt-before-save)
+(add-hook 'go-mode-hook (lambda ()
+  (set (make-local-variable 'compile-command) "go build -o ")))
+
+;; Markdown
+(add-hook 'markdown-mode-hook #'auto-fill-mode)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
+;; Eshell
+(defun eshell-restart-proc ()
+  (interactive)
+  (eshell-kill-process)
+  (sleep-for 1) ;; Have to
+  (eshell-previous-matching-input-from-input 0)
+  (eshell-send-input))
+(add-hook 'eshell-mode-hook
+          (lambda () (define-key eshell-mode-map
+                       (kbd "C-c r") 'eshell-restart-proc)))
+
+;; Elisp
+(defun load-current-file ()
+  (interactive)
+  (load-file (buffer-file-name (current-buffer))))
+(define-key emacs-lisp-mode-map
+  (kbd "C-c l") 'load-current-file)
+
+;; Windows maximize window
+(defun maximize-frame ()
+  (interactive)
+  (when (eq system-type 'windows-nt)
+    (w32-send-sys-command 61488)))
+(add-hook 'window-setup-hook 'maximize-frame t)
