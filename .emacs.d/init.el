@@ -36,6 +36,7 @@
 (global-set-key (kbd "ESC M-g") 'magit-status)
 (global-set-key (kbd "ESC M-d") 'delete-trailing-whitespace)
 (global-set-key (kbd "ESC M-e") 'eshell)
+(global-set-key (kbd "ESC M-r") 'recompile)
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
 
 ;; Preferences
@@ -58,11 +59,8 @@
 (ido-mode t)
 (ido-everywhere t)
 (global-auto-revert-mode 1)
-(set-face-attribute 'default nil :font "Terminus" :height 150)
+(set-face-attribute 'default nil :font "Terminus" :height 110)
 (set-language-environment "UTF-8")
-
-;; Compile command
-(global-set-key (kbd "C-c C-.") 'recompile)
 
 ;; Haskell
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
