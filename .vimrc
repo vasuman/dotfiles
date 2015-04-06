@@ -31,6 +31,7 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 
+set shortmess=I
 set incsearch
 set showmatch
 set nowrap
