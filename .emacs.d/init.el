@@ -1,17 +1,21 @@
 (require 'cl-lib)
+;; Time-stamp: <2015-04-18 15:54:31 Vasuman>
+;; 2015-04-18T15:52:34+0530
 
-;; Packages installed -- add here whenever new package installed
+;; packages installed -- add here whenever new package installed
 (defvar my-packages '(
-              cider
-              haskell-mode
-              wrap-region
-              expand-region
-              magit
-              go-mode
-              markdown-mode
-              ))
+                      cider
+                      haskell-mode
+                      wrap-region
+                      expand-region
+                      magit
+                      go-mode
+                      markdown-mode
+                      js2-mode
+                      skewer-mode
+                      ))
 
-;; Check and install packages
+;; check and install packages
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
@@ -23,13 +27,19 @@
 (package-initialize)
 
 (unless (packages-installed-p my-packages)
- (package-refresh-contents)
- (dolist (p my-packages)
-  (when (not (package-installed-p p))
-   (package-install p))))
+  (package-refresh-contents)
+  (dolist (p my-packages)
+    (when (not (package-installed-p p))
+      (package-install p))))
 
-;; Custom functions
+;; custom functions
 (defun untabify-buffer () (interactive) (untabify (point-min) (point-max)))
+(defun insert-timestamp ()
+  (interactive)
+  (insert
+   (with-temp-buffer
+     (shell-command "date --iso-8601=seconds" (current-buffer))
+     (buffer-string))))
 
 ;; Keybindings
 (global-set-key (kbd "C-=") 'er/expand-region)
@@ -37,13 +47,16 @@
 (global-set-key (kbd "ESC M-d") 'delete-trailing-whitespace)
 (global-set-key (kbd "ESC M-e") 'eshell)
 (global-set-key (kbd "ESC M-r") 'recompile)
+(global-set-key (kbd "ESC M-t") 'insert-timestamp)
+(global-set-key (kbd "ESC M-b") 'bookmark-bmenu-list)
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
 
 ;; Preferences
 (setq backup-by-copying t)
 (setq backup-directory-alist '(("." . "~/.saves")))
-(setq c-basic-offset 4)
 (setq tab-width 4)
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'cperl-indent-level 'tab-width)
 (setq delete-old-versions t)
 (setq inhibit-startup-screen t)
 (setq initial-scratch-message "")
@@ -62,6 +75,13 @@
 (set-face-attribute 'default nil :font "Terminus" :height 110)
 (set-language-environment "UTF-8")
 
+;; Dired
+(eval-after-load 'dired
+  (lambda ()
+    (define-key dired-mode-map (kbd "/") 'dired-isearch-filenames)
+    (define-key dired-mode-map (kbd "^")
+      (lambda () (interactive) (find-alternate-file "..")))))
+
 ;; Haskell
 (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
@@ -74,9 +94,18 @@
 (setq gofmt-command "goimports")
 (add-hook 'before-save-hook #'gofmt-before-save)
 (add-hook 'go-mode-hook (lambda ()
-  (set (make-local-variable 'compile-command) "go build -o ")))
+                          (set (make-local-variable 'compile-command) "go build -o ")                          
+                          (define-key go-mode-map
+                            (kbd "C-c C-d") 'godoc)
+                          (define-key go-mode-map
+                            (kbd "C-c C-.") 'godoc-at-point)
+                          (define-key go-mode-map
+                            (kbd "C-c C-e") 'godef-describe)
+                          (define-key go-mode-map
+                            (kbd "C-c M-j") 'godef-jump-other-window)))
 
 ;; Markdown
+(add-to-list 'auto-mode-alist '("\\.mkd\\'" . markdown-mode))
 (add-hook 'markdown-mode-hook #'auto-fill-mode)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
@@ -88,9 +117,11 @@
   (sleep-for 1) ;; Have to
   (eshell-previous-matching-input-from-input 0)
   (eshell-send-input))
-(add-hook 'eshell-mode-hook
-          (lambda () (define-key eshell-mode-map
-                       (kbd "C-c r") 'eshell-restart-proc)))
+
+(add-hook 'eshell-mode-hook ;; Investigate why `eshell-mode-map` never works!!
+          (lambda ()
+            (define-key eshell-mode-map
+              (kbd "C-c r") 'eshell-restart-proc)))
 
 ;; Elisp
 (defun load-current-file ()
@@ -98,10 +129,14 @@
   (load-file (buffer-file-name (current-buffer))))
 (define-key emacs-lisp-mode-map
   (kbd "C-c l") 'load-current-file)
+(show-paren-mode 1)
 
-;; Windows maximize window
-(defun maximize-frame ()
-  (interactive)
-  (when (eq system-type 'windows-nt)
-    (w32-send-sys-command 61488)))
-(add-hook 'window-setup-hook 'maximize-frame t)
+;; Javascript
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(skewer-setup)
+(defun skewer-load-file (f)
+  (interactive "fFile to load: ")
+  (let ((l-buf (find-file f)))
+    (with-current-buffer l-buf
+      (skewer-load-buffer))
+    (kill-buffer l-buf)))
