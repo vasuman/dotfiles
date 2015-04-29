@@ -1,6 +1,4 @@
 (require 'cl-lib)
-;; Time-stamp: <2015-04-18 15:54:31 Vasuman>
-;; 2015-04-18T15:52:34+0530
 
 ;; packages installed -- add here whenever new package installed
 (defvar my-packages '(
@@ -13,6 +11,7 @@
                       markdown-mode
                       js2-mode
                       skewer-mode
+                      web-mode
                       ))
 
 ;; check and install packages
@@ -50,6 +49,8 @@
 (global-set-key (kbd "ESC M-t") 'insert-timestamp)
 (global-set-key (kbd "ESC M-b") 'bookmark-bmenu-list)
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
+(global-set-key (kbd "C-<next>") 'next-multiframe-window)
+(global-set-key (kbd "C-<prior>") 'previous-multiframe-window)
 
 ;; Preferences
 (setq backup-by-copying t)
@@ -66,14 +67,18 @@
 (setq fill-column 80)
 (setq-default indent-tabs-mode nil)
 (setq-default truncate-lines t)
+(setq visible-bell 1)
 (wrap-region-global-mode t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (ido-mode t)
 (ido-everywhere t)
 (global-auto-revert-mode 1)
-(set-face-attribute 'default nil :font "Terminus" :height 110)
+(set-face-attribute 'default nil :font "Monaco" :height 110)
 (set-language-environment "UTF-8")
+
+;; Start maximized
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 ;; Dired
 (eval-after-load 'dired
@@ -91,18 +96,20 @@
 (setq ispell-personal-dictionary "~/.ispell")
 
 ;; Golang
+(defun go-setup-hook ()
+  (setq compile-command "go build -v ")                          
+  (add-hook 'before-save-hook #'gofmt-before-save)
+  (define-key go-mode-map
+    (kbd "C-c C-d") 'godoc)
+  (define-key go-mode-map
+    (kbd "C-c C-.") 'godoc-at-point)
+  (define-key go-mode-map
+    (kbd "C-c C-e") 'godef-describe)
+  (define-key go-mode-map
+    (kbd "M-.") 'godef-jump))
+
 (setq gofmt-command "goimports")
-(add-hook 'before-save-hook #'gofmt-before-save)
-(add-hook 'go-mode-hook (lambda ()
-                          (set (make-local-variable 'compile-command) "go build -o ")                          
-                          (define-key go-mode-map
-                            (kbd "C-c C-d") 'godoc)
-                          (define-key go-mode-map
-                            (kbd "C-c C-.") 'godoc-at-point)
-                          (define-key go-mode-map
-                            (kbd "C-c C-e") 'godef-describe)
-                          (define-key go-mode-map
-                            (kbd "C-c M-j") 'godef-jump-other-window)))
+(add-hook 'go-mode-hook 'go-setup-hook)
 
 ;; Markdown
 (add-to-list 'auto-mode-alist '("\\.mkd\\'" . markdown-mode))
@@ -118,7 +125,8 @@
   (eshell-previous-matching-input-from-input 0)
   (eshell-send-input))
 
-(add-hook 'eshell-mode-hook ;; Investigate why `eshell-mode-map` never works!!
+;; Investigate why `eshell-mode-map` never works!!
+(add-hook 'eshell-mode-hook
           (lambda ()
             (define-key eshell-mode-map
               (kbd "C-c r") 'eshell-restart-proc)))
@@ -140,3 +148,24 @@
     (with-current-buffer l-buf
       (skewer-load-buffer))
     (kill-buffer l-buf)))
+
+;; Web Templates
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.tmpl\\'" . web-mode))
+(setq web-mode-markup-indent-offset 2)
+
+;; Org
+(defconst org-dir "D:\\Stuff\\Org\\")
+(defconst org-todo-file "todo.org")
+
+;; Initial 
+(defun custom-startup ()  
+  (let ((has-scratch (string= (buffer-name (current-buffer)) "*scratch*")))
+    (if has-scratch
+        (progn
+          (call-interactively 'bookmark-bmenu-list)))))
+
+(add-hook 'emacs-startup-hook 'custom-startup)
+
+;; End
+(put 'dired-find-alternate-file 'disabled nil)
