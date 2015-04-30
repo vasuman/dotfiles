@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 (require 'cl-lib)
 
 ;; packages installed -- add here whenever new package installed
