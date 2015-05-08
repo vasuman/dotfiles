@@ -49,8 +49,8 @@
 (global-set-key (kbd "ESC M-t") 'insert-timestamp)
 (global-set-key (kbd "ESC M-b") 'bookmark-bmenu-list)
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
-(global-set-key (kbd "C-<next>") 'next-multiframe-window)
-(global-set-key (kbd "C-<prior>") 'previous-multiframe-window)
+(global-set-key (kbd "C-<tab>") 'next-multiframe-window)
+(global-set-key (kbd "C-S-<tab>") 'previous-multiframe-window)
 
 ;; Preferences
 (setq backup-by-copying t)
@@ -65,6 +65,7 @@
 (setq keyboard-coding-system 'utf-8-unix)
 (setq version-control t)
 (setq fill-column 80)
+(column-number-mode)
 (setq-default indent-tabs-mode nil)
 (setq-default truncate-lines t)
 (setq visible-bell 1)
@@ -106,7 +107,7 @@
   (define-key go-mode-map
     (kbd "C-c C-e") 'godef-describe)
   (define-key go-mode-map
-    (kbd "M-.") 'godef-jump))
+    (kbd "C-.") 'godef-jump))
 
 (setq gofmt-command "goimports")
 (add-hook 'go-mode-hook 'go-setup-hook)
