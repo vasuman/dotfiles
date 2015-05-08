@@ -1,10 +1,11 @@
 set nocompatible
 filetype off
-set rtp+=~/.vim/vundle
+set rtp+=~/.vim/bundle/vundle
 call vundle#begin()
 
 Plugin 'gmarik/vundle'
 Plugin 'bling/vim-airline'
+Plugin 'chrisbra/SudoEdit.vim'
 "Plugin 'Raimondi/delimitMate'
 "Plugin 'myusuf3/numbers.vim'
 "Plugin 'Lokaltog/vim-easymotion'
@@ -20,7 +21,6 @@ Plugin 'bling/vim-airline'
 "Plugin 'tpope/vim-markdown'
 "Plugin 'guns/vim-clojure-static'
 "Plugin 'majutsushi/tagbar'
-"Plugin 'chrisbra/SudoEdit.vim'
 "Plugin 'ratazzi/blackboard.vim'
 "Plugin 'tpope/vim-fireplace'
 "Plugin 'briancollins/vim-jst'

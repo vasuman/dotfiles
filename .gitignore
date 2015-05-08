@@ -1,6 +1,7 @@
 .emacs.d/
 !.emacs.d/init.el
 .vim/bundle/
+.vim/*
 .config/dwb/default
 *.swp
 *.swo

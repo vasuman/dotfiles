@@ -1,0 +1,5 @@
+xterm*locale: true
+xterm*termName: xterm-256color
+xterm*backarrowKey: false
+xterm*metaSendsEscape: true
+urxvt.font: -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso8859-1
