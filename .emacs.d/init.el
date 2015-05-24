@@ -12,6 +12,7 @@
                       js2-mode
                       skewer-mode
                       web-mode
+                      rust-mode
                       ))
 
 ;; check and install packages
@@ -49,8 +50,8 @@
 (global-set-key (kbd "ESC M-t") 'insert-timestamp)
 (global-set-key (kbd "ESC M-b") 'bookmark-bmenu-list)
 (global-set-key (kbd "C-x p") 'previous-multiframe-window)
-(global-set-key (kbd "C-<tab>") 'next-multiframe-window)
-(global-set-key (kbd "C-S-<tab>") 'previous-multiframe-window)
+(global-set-key (kbd "C-<next>") 'next-multiframe-window)
+(global-set-key (kbd "C-<prior>") 'previous-multiframe-window)
 
 ;; Preferences
 (setq backup-by-copying t)
@@ -75,8 +76,9 @@
 (ido-mode t)
 (ido-everywhere t)
 (global-auto-revert-mode 1)
-(set-face-attribute 'default nil :font "Monaco" :height 110)
+(set-face-attribute 'default nil :font "Anonymous Pro")
 (set-language-environment "UTF-8")
+(windmove-default-keybindings 'meta)
 
 ;; Start maximized
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
@@ -112,6 +114,11 @@
 (setq gofmt-command "goimports")
 (add-hook 'go-mode-hook 'go-setup-hook)
 
+;; go oracle
+(eval-after-load 'go-mode
+  (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el"))
+
+
 ;; Markdown
 (add-to-list 'auto-mode-alist '("\\.mkd\\'" . markdown-mode))
 (add-hook 'markdown-mode-hook #'auto-fill-mode)
@@ -142,6 +149,7 @@
 
 ;; Javascript
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(setq js2-basic-offset 2)
 (skewer-setup)
 (defun skewer-load-file (f)
   (interactive "fFile to load: ")
@@ -153,6 +161,7 @@
 ;; Web Templates
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.tmpl\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 (setq web-mode-markup-indent-offset 2)
 
 ;; Org
@@ -170,3 +179,4 @@
 
 ;; End
 (put 'dired-find-alternate-file 'disabled nil)
+(put 'erase-buffer 'disabled nil)
