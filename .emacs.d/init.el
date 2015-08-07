@@ -116,7 +116,7 @@
 
 ;; go oracle
 (eval-after-load 'go-mode
-  (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el"))
+  `(load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el"))
 
 
 ;; Markdown
