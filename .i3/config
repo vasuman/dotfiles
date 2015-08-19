@@ -167,6 +167,7 @@ bar {
 bindsym $mod+Shift+h exec "i3-nagbar -m 'Exit' -b 'Shutdown' 'systemctl poweroff' -b 'Reboot' 'systemctl reboot'"
 bindsym Mod1+Control+e exec "emacs"
 bindsym $mod+b exec "chromium"
+bindsym $mod+Shift+b exec "chromium --incognito"
 bindsym $mod+m exec "thunderbird"
 
 # For window
