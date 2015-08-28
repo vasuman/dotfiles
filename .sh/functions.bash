@@ -37,7 +37,7 @@ function glob {
     fi
     if [[ $1 == "-deploy" ]]; then
         python2 $glob_dir/generate.py $BLOG_DIR $out_dir -skipdrafts
-        cd $OUT_DIR
+        cd $out_dir
         git add . 
         git commit -am 'Automated commit' 
         git push
