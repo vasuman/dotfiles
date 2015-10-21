@@ -9,6 +9,8 @@ Plugin 'bling/vim-airline'
 Plugin 'chrisbra/SudoEdit.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
+Plugin 'mattn/emmet-vim'
+Plugin 'tikhomirov/vim-glsl'
 
 call vundle#end()
 
@@ -28,9 +30,9 @@ set ttimeoutlen=50
 
 set autoindent
 set tabstop=4
-set shiftwidth=4    
-set softtabstop=4   
-set expandtab       
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 
 set guioptions-=T
 set guioptions-=m

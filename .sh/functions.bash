@@ -22,7 +22,7 @@ function github {
             ;;
         *)
             echo "github: unknown command $1"
-            return 1
+            exit 1
             ;;
     esac
 }
@@ -33,7 +33,7 @@ function glob {
     port=8000
     if [[ ! -d $glob_dir ]]; then
         echo "blog: get glob first"
-        return 1
+        exit 1
     fi
     if [[ $1 == "-deploy" ]]; then
         python2 $glob_dir/generate.py $BLOG_DIR $out_dir -skipdrafts
