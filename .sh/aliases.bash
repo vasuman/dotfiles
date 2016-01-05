@@ -1,5 +1,5 @@
-alias ls='ls --color=auto'
-alias l='ls -l --color=auto'
+alias l='ls -l'
+alias la='ls -al'
 alias e='emacs -nw'
 alias v='vim'
 

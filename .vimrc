@@ -1,6 +1,7 @@
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle
+set shell=/bin/bash
 
 call vundle#begin()
 
@@ -10,7 +11,6 @@ Plugin 'chrisbra/SudoEdit.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
 Plugin 'mattn/emmet-vim'
-Plugin 'tikhomirov/vim-glsl'
 
 call vundle#end()
 
