@@ -14,3 +14,5 @@ export GOPATH=$CODE_DIR/go
 export PATH=$PATH:$GOPATH/bin
 
 
+# Override
+export DOTFILE_DIR=$HOME/.dot

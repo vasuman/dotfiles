@@ -37,3 +37,7 @@ set expandtab
 set guioptions-=T
 set guioptions-=m
 
+au BufRead,BufNewFile *.json set ft=javascript
+au BufRead,BufNewFile *.ion set ft=javascript
+au BufRead,BufNewFile *.fusion set ft=lisp
+au BufRead,BufNewFile *.dp set ft=lisp
