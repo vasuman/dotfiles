@@ -41,3 +41,6 @@ au BufRead,BufNewFile *.json set ft=javascript
 au BufRead,BufNewFile *.ion set ft=javascript
 au BufRead,BufNewFile *.fusion set ft=lisp
 au BufRead,BufNewFile *.dp set ft=lisp
+au BufRead,BufNewFile *.md set ft=markdown
+
+command MakeDir !mkdir -p $(dirname %)
