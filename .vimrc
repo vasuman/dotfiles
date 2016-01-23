@@ -37,10 +37,15 @@ set expandtab
 set guioptions-=T
 set guioptions-=m
 
+" strip trailing whitespace
+au BufWritePre * :%s/\s\+$//e
+
 au BufRead,BufNewFile *.json set ft=javascript
 au BufRead,BufNewFile *.ion set ft=javascript
 au BufRead,BufNewFile *.fusion set ft=lisp
 au BufRead,BufNewFile *.dp set ft=lisp
 au BufRead,BufNewFile *.md set ft=markdown
 
-command MakeDir !mkdir -p $(dirname %)
+command! MakeDir !mkdir -p $(dirname %)
+
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
