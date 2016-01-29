@@ -18,11 +18,9 @@ filetype plugin indent on
 syntax on
 
 set encoding=utf-8
-
 set shortmess=I
 
 set nowrap
-
 set number
 
 set laststatus=2
@@ -44,8 +42,14 @@ au BufRead,BufNewFile *.json set ft=javascript
 au BufRead,BufNewFile *.ion set ft=javascript
 au BufRead,BufNewFile *.fusion set ft=lisp
 au BufRead,BufNewFile *.dp set ft=lisp
-au BufRead,BufNewFile *.md set ft=markdown
+au BufRead,BufNewFile *.md set ft=markdown tw=80
+
+au BufRead,BufNewFile *.js setl sw=2 sts=2 et
+
+cabbrev WriteHook au BufWritePost * exec
 
 command! MakeDir !mkdir -p $(dirname %)
+
+nnoremap
 
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
