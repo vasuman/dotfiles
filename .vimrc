@@ -50,6 +50,4 @@ cabbrev WriteHook au BufWritePost * exec
 
 command! MakeDir !mkdir -p $(dirname %)
 
-nnoremap
-
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
