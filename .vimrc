@@ -36,6 +36,7 @@ set expandtab
 
 set guioptions-=T
 set guioptions-=m
+set guifont=Anonymous\ Pro:h15
 
 " strip trailing whitespace
 au BufWritePre * :%s/\s\+$//e
