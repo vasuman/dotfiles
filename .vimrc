@@ -11,6 +11,7 @@ Plugin 'chrisbra/SudoEdit.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
 Plugin 'mattn/emmet-vim'
+Plugin 'vimwiki/vimwiki'
 
 call vundle#end()
 
@@ -52,3 +53,5 @@ cabbrev WriteHook au BufWritePost * exec
 command! MakeDir !mkdir -p $(dirname %)
 
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
+let g:vimwiki_list = [ { 'path': '~/Dropbox/Wiki/', 'syntax': 'markdown', 'ext': '.vmd' } ]
