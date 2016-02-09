@@ -6,6 +6,7 @@ set shell=/bin/bash
 call vundle#begin()
 
 Plugin 'gmarik/vundle'
+Plugin 'tpope/vim-surround'
 Plugin 'bling/vim-airline'
 Plugin 'chrisbra/SudoEdit.vim'
 Plugin 'kien/ctrlp.vim'
