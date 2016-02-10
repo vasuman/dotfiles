@@ -13,6 +13,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
 Plugin 'mattn/emmet-vim'
 Plugin 'vimwiki/vimwiki'
+Plugin 'scrooloose/nerdtree'
 
 call vundle#end()
 
@@ -36,7 +37,7 @@ set expandtab
 
 set guioptions-=T
 set guioptions-=m
-set guifont=Anonymous\ Pro:h15
+set guifont=Anonymous\ Pro\ 15
 
 " strip trailing whitespace
 au BufWritePre * :%s/\s\+$//e
@@ -53,6 +54,14 @@ cabbrev WriteHook au BufWritePost * exec
 
 command! MakeDir !mkdir -p $(dirname %)
 
+nnoremap <F3> :NERDTreeToggle<cr>
+
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 let g:vimwiki_list = [ { 'path': '~/Dropbox/Wiki/', 'syntax': 'markdown', 'ext': '.vmd' } ]
+
+let NERDTreeShowBookmarks=1
+
+if filereadable(glob("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif

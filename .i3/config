@@ -168,6 +168,7 @@ bar {
 # Custom keybindings
 bindsym $mod+Shift+h exec "i3-nagbar -m 'Exit' -b 'Shutdown' 'systemctl poweroff' -b 'Reboot' 'systemctl reboot'"
 bindsym Mod1+Control+e exec "emacs"
+bindsym $mod+Shift+v exec "gvim"
 bindsym $mod+b exec "firefox"
 bindsym $mod+Shift+b exec "chromium --incognito"
 
