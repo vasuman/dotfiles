@@ -1,11 +1,12 @@
-alias l='ls -l'
-alias la='ls -al'
+alias c='cd'
+
+alias l='ls --color=auto'
+alias ll='ls --color=auto -l'
+alias la='ls --color=auto -al'
+
 alias e='emacs -nw'
 alias v='vim'
 
 alias serve='python2 -m SimpleHTTPServer'
 
-alias gd='github cd'
-alias gd!='github cd $GITHUB_USER'
-
-alias push_dotfiles='cd $DOTFILE_DIR && git add . && git commit -m "Automated commit" && git push && cd -'
+alias commit-dot='cd .dot && git add . && git commit -m "Automated commit" && git push && cd -'
