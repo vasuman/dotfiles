@@ -37,15 +37,12 @@ set expandtab
 
 set guioptions-=T
 set guioptions-=m
-set guifont=Anonymous\ Pro\ 15
+set guifont=
 
 " strip trailing whitespace
 au BufWritePre * :%s/\s\+$//e
 
 au BufRead,BufNewFile *.json set ft=javascript
-au BufRead,BufNewFile *.ion set ft=javascript
-au BufRead,BufNewFile *.fusion set ft=lisp
-au BufRead,BufNewFile *.dp set ft=lisp
 au BufRead,BufNewFile *.md set ft=markdown tw=80
 
 au BufRead,BufNewFile *.js setl sw=2 sts=2 et
@@ -56,7 +53,7 @@ command! MakeDir !mkdir -p $(dirname %)
 
 nnoremap <F3> :NERDTreeToggle<cr>
 
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git'
 
 let g:vimwiki_list = [ { 'path': '~/Dropbox/Wiki/', 'syntax': 'markdown', 'ext': '.vmd' } ]
 
