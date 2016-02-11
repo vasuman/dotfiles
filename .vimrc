@@ -55,7 +55,7 @@ nnoremap <F3> :NERDTreeToggle<cr>
 
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git'
 
-let g:vimwiki_list = [ { 'path': '~/Dropbox/Wiki/', 'syntax': 'markdown', 'ext': '.vmd' } ]
+let g:vimwiki_list = [ { 'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.vmd' } ]
 
 let NERDTreeShowBookmarks=1
 
