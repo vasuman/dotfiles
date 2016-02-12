@@ -9,4 +9,4 @@ alias v='vim'
 
 alias serve='python2 -m SimpleHTTPServer'
 
-alias commit-dot='cd .dot && git add . && git commit -m "Automated commit" && git push && cd -'
+alias commit-dot='cd .dot && git add . && git commit -a && git push && cd -'
