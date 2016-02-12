@@ -1,8 +1,8 @@
 alias c='cd'
 
-alias l='ls --color=auto'
-alias ll='ls --color=auto -l'
-alias la='ls --color=auto -al'
+alias l='ls'
+alias ll='ls -l'
+alias la='ls -al'
 
 alias e='emacs -nw'
 alias v='vim'

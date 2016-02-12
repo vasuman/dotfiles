@@ -15,6 +15,10 @@ Plugin 'mattn/emmet-vim'
 Plugin 'vimwiki/vimwiki'
 Plugin 'scrooloose/nerdtree'
 
+if filereadable(glob("~/.vimrc.plugins"))
+    source ~/.vimrc.plugins
+endif
+
 call vundle#end()
 
 filetype plugin indent on
