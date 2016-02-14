@@ -14,6 +14,7 @@ Plugin 'fatih/vim-go'
 Plugin 'mattn/emmet-vim'
 Plugin 'vimwiki/vimwiki'
 Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-fugitive'
 
 if filereadable(glob("~/.vimrc.plugins"))
     source ~/.vimrc.plugins
@@ -45,6 +46,8 @@ set guifont=
 
 " strip trailing whitespace
 au BufWritePre * :%s/\s\+$//e
+
+au FileType * setlocal formatoptions-=o
 
 au BufRead,BufNewFile *.json set ft=javascript
 au BufRead,BufNewFile *.md set ft=markdown tw=80
