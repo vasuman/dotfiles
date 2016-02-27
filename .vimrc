@@ -47,10 +47,11 @@ set guifont=
 " strip trailing whitespace
 au BufWritePre * :%s/\s\+$//e
 
-au FileType * setlocal formatoptions-=o
+au FileType vimwiki setl tw=80
+au FileType * setl formatoptions-=o
 
-au BufRead,BufNewFile *.json set ft=javascript
-au BufRead,BufNewFile *.md set ft=markdown tw=80
+au BufRead,BufNewFile *.json setl ft=javascript
+au BufRead,BufNewFile *.md setl ft=markdown tw=80
 au BufRead,BufNewFile *.js setl sw=2 sts=2 et
 
 cabbrev WriteHook au BufWritePost * exec
