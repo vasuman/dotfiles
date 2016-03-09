@@ -15,6 +15,8 @@ Plugin 'mattn/emmet-vim'
 Plugin 'vimwiki/vimwiki'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 if filereadable(glob("~/.vimrc.plugins"))
     source ~/.vimrc.plugins
@@ -52,7 +54,7 @@ au FileType * setl formatoptions-=o
 
 au BufRead,BufNewFile *.json setl ft=javascript
 au BufRead,BufNewFile *.md setl ft=markdown tw=80
-au BufRead,BufNewFile *.js setl sw=2 sts=2 et
+au BufRead,BufNewFile *.js,*.jsx setl sw=2 sts=2 et
 
 cabbrev WriteHook au BufWritePost * exec
 
@@ -65,7 +67,9 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git'
 
 let g:vimwiki_list = [ { 'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.vmd' } ]
 
-let NERDTreeShowBookmarks=1
+let g:javascript_enable_domhtmlcss = 1
+
+let NERDTreeShowBookmarks = 1
 
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
