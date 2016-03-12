@@ -17,6 +17,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'scrooloose/syntastic'
 
 if filereadable(glob("~/.vimrc.plugins"))
     source ~/.vimrc.plugins
@@ -46,6 +47,8 @@ set guioptions-=T
 set guioptions-=m
 set guifont=
 
+set autoread
+
 " strip trailing whitespace
 au BufWritePre * :%s/\s\+$//e
 
@@ -53,23 +56,34 @@ au FileType vimwiki setl tw=80
 au FileType * setl formatoptions-=o
 
 au BufRead,BufNewFile *.json setl ft=javascript
+au BufRead,BufNewFile *.sol setl ft=javascript
 au BufRead,BufNewFile *.md setl ft=markdown tw=80
 au BufRead,BufNewFile *.js,*.jsx setl sw=2 sts=2 et
 
 cabbrev WriteHook au BufWritePost * exec
 
 command! MakeDir !mkdir -p $(dirname %)
+command! InsertDate r! date +"\%d-\%m-\%Y"
 
 nnoremap <F2> :Gstatus<cr>
 nnoremap <F3> :NERDTreeToggle<cr>
+
+let NERDTreeShowBookmarks = 1
 
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git'
 
 let g:vimwiki_list = [ { 'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.vmd' } ]
 
-let g:javascript_enable_domhtmlcss = 1
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-let NERDTreeShowBookmarks = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = [ 'eslint' ]
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
 
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
