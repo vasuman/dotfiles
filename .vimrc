@@ -67,6 +67,7 @@ command! InsertDate r! date +"\%d-\%m-\%Y"
 
 nnoremap <F2> :Gstatus<cr>
 nnoremap <F3> :NERDTreeToggle<cr>
+nnoremap <F3> :SyntasticCheck<cr>
 
 let NERDTreeShowBookmarks = 1
 
