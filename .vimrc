@@ -49,6 +49,12 @@ set guifont=
 
 set autoread
 
+" window movement
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
+
 " strip trailing whitespace
 au BufWritePre * :%s/\s\+$//e
 
@@ -65,9 +71,10 @@ cabbrev WriteHook au BufWritePost * exec
 command! MakeDir !mkdir -p $(dirname %)
 command! InsertDate r! date +"\%d-\%m-\%Y"
 
-nnoremap <F2> :Gstatus<cr>
-nnoremap <F3> :NERDTreeToggle<cr>
-nnoremap <F4> :SyntasticCheck<cr>
+nnoremap <F2> :w<cr>
+nnoremap <F3> :SyntasticCheck<cr>
+nnoremap <F4> :NERDTreeToggle<cr>
+nnoremap <F5> :Gstatus<cr>
 
 let NERDTreeShowBookmarks = 1
 
