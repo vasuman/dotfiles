@@ -8,7 +8,6 @@ HOME_DIR = path.expanduser('~')
 SELF_PATH = path.realpath(__file__)
 CUR_DIR = path.dirname(SELF_PATH)
 
-
 def ln_copy(src, dst, exclude = [], overwrite = False):
     if path.samefile(src, dst):
         print 'Samefile, %s and %s' % (src, dst)
@@ -16,7 +15,7 @@ def ln_copy(src, dst, exclude = [], overwrite = False):
     print 'Copy linking from, %s to %s' % (src, dst)
     for f in listdir(src):
         p = path.join(src, f)
-        if f.startswith('.git'):
+        if f.startswith('.git') and not f.endswith('config'):
             print 'Git, %s' % p
             continue
         if p in exclude:

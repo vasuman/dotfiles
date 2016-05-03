@@ -27,6 +27,7 @@ call vundle#end()
 
 filetype plugin indent on
 syntax on
+colorscheme desert
 
 set encoding=utf-8
 set shortmess=I
@@ -48,6 +49,10 @@ set guioptions-=m
 set guifont=
 
 set autoread
+
+" clean up swap files
+set backupdir=~/.backup,/tmp,.
+set directory=~/.backup,/tmp,.
 
 " window movement
 nmap <silent> <A-Up> :wincmd k<CR>

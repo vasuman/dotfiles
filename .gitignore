@@ -2,6 +2,8 @@
 !.emacs.d/init.el
 .vim/bundle/
 .vim/*
+.backup/
+!.backup/.gitkeep
 .config/dwb/default
 *.swp
 *.swo
