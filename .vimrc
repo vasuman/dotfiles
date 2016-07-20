@@ -7,6 +7,7 @@ call vundle#begin()
 
 Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-eunuch'
 Plugin 'bling/vim-airline'
 Plugin 'chrisbra/SudoEdit.vim'
 Plugin 'kien/ctrlp.vim'
@@ -83,7 +84,7 @@ nnoremap <F5> :Gstatus<cr>
 
 let NERDTreeShowBookmarks = 1
 
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git\|build'
 
 let g:vimwiki_list = [ { 'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.vmd' } ]
 
@@ -97,6 +98,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = [ 'eslint' ]
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
+
+let g:go_fmt_command = "goimports"
 
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
