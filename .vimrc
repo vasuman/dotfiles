@@ -19,6 +19,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/syntastic'
+Plugin 'lambdatoast/elm.vim'
 
 if filereadable(glob("~/.vimrc.plugins"))
     source ~/.vimrc.plugins
@@ -84,7 +85,7 @@ nnoremap <F5> :Gstatus<cr>
 
 let NERDTreeShowBookmarks = 1
 
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git\|build'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|\.git'
 
 let g:vimwiki_list = [ { 'path': '~/wiki/', 'syntax': 'markdown', 'ext': '.vmd' } ]
 
