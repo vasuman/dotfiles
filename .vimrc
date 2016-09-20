@@ -20,6 +20,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/syntastic'
 Plugin 'lambdatoast/elm.vim'
+Plugin 'tikhomirov/vim-glsl'
 
 if filereadable(glob("~/.vimrc.plugins"))
     source ~/.vimrc.plugins
@@ -35,7 +36,7 @@ set encoding=utf-8
 set shortmess=I
 
 set nowrap
-set number
+set relativenumber
 
 set laststatus=2
 set ttimeoutlen=50
@@ -79,7 +80,7 @@ command! MakeDir !mkdir -p $(dirname %)
 command! InsertDate r! date +"\%d-\%m-\%Y"
 
 nnoremap <F2> :w<cr>
-nnoremap <F3> :SyntasticCheck<cr>
+nnoremap <F3> :SyntasticToggle<cr>
 nnoremap <F4> :NERDTreeToggle<cr>
 nnoremap <F5> :Gstatus<cr>
 
