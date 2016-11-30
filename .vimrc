@@ -21,6 +21,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/syntastic'
 Plugin 'lambdatoast/elm.vim'
 Plugin 'tikhomirov/vim-glsl'
+Plugin 'jdonaldson/vaxe'
 
 if filereadable(glob("~/.vimrc.plugins"))
     source ~/.vimrc.plugins
