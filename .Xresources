@@ -2,5 +2,5 @@ xterm*locale: true
 xterm*termName: xterm-256color
 xterm*backarrowKey: false
 xterm*metaSendsEscape: true
-urxvt*font: xft:Terminus:size=15,xft:Freefont
+urxvt*font: xft:Terminus:size=14,xft:Freefont
 urxvt*cursorColor: #ccc
