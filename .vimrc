@@ -17,11 +17,9 @@ Plugin 'vimwiki/vimwiki'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
 Plugin 'scrooloose/syntastic'
-Plugin 'lambdatoast/elm.vim'
 Plugin 'tikhomirov/vim-glsl'
-Plugin 'jdonaldson/vaxe'
+Plugin 'dart-lang/dart-vim-plugin'
 
 if filereadable(glob("~/.vimrc.plugins"))
     source ~/.vimrc.plugins
@@ -70,12 +68,14 @@ au BufWritePre * :%s/\s\+$//e
 au FileType vimwiki setl tw=80
 au FileType * setl formatoptions-=o
 
+" set filetype options
 au BufRead,BufNewFile *.json setl ft=javascript
 au BufRead,BufNewFile *.sol setl ft=javascript
 au BufRead,BufNewFile *.md setl ft=markdown tw=80
 au BufRead,BufNewFile *.js,*.jsx setl sw=2 sts=2 et
 
-cabbrev WriteHook au BufWritePost * exec
+" autoformat hooks
+au BufWritePost *.dart DartFmt
 
 command! MakeDir !mkdir -p $(dirname %)
 command! InsertDate r! date +"\%d-\%m-\%Y"
