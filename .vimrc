@@ -78,7 +78,6 @@ au BufRead,BufNewFile *.dart setl sw=2 sts=2 et
 " autoformat hooks
 au BufWritePost *.dart DartFmt
 
-command! MakeDir !mkdir -p $(dirname %)
 command! InsertDate r! date +"\%d-\%m-\%Y"
 
 nnoremap <F2> :w<cr>
