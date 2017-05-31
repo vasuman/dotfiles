@@ -73,6 +73,7 @@ au BufRead,BufNewFile *.json setl ft=javascript
 au BufRead,BufNewFile *.sol setl ft=javascript
 au BufRead,BufNewFile *.md setl ft=markdown tw=80
 au BufRead,BufNewFile *.js,*.jsx setl sw=2 sts=2 et
+au BufRead,BufNewFile *.dart setl sw=2 sts=2 et
 
 " autoformat hooks
 au BufWritePost *.dart DartFmt
