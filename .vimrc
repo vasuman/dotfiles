@@ -12,10 +12,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
 Plugin 'chrisbra/SudoEdit.vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'fatih/vim-go'
 Plugin 'mattn/emmet-vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'dart-lang/dart-vim-plugin'
+Plugin 'sheerun/vim-polyglot'
 
 if filereadable(glob("~/.vimrc.plugins"))
     source ~/.vimrc.plugins
