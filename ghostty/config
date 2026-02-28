@@ -1,0 +1,3 @@
+keybind = ctrl+cmd+up=toggle_maximize
+theme = dark:Adwaita Dark,light:Adwaita
+

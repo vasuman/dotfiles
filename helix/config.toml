@@ -1,0 +1,13 @@
+theme = "kanagawa"
+
+[editor]
+color-modes = true
+popup-border = "menu"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
