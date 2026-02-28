@@ -19,7 +19,6 @@ link() {
 }
 
 link shell ~/.shell
-link nvim ~/.config/nvim
 link ghostty ~/.config/ghostty
 link gitconfig ~/.gitconfig
 link helix ~/.config/helix
