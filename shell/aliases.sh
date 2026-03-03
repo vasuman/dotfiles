@@ -9,5 +9,8 @@ alias la='ls -al'
 alias lg='lazygit'
 alias vim='hx'
 
+alias ai='aichat'
+alias aie='aichat --model claude:claude-haiku-4-5-20251001 -e '
+
 alias va='source .venv/bin/activate'
 alias asl='aws sso login'
