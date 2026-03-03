@@ -13,6 +13,9 @@ alias gcnv='git commit --no-verify -am'
 alias ghpr='gh pr create'
 alias ghprf='gh pr create --fill'
 
+# Worktrunk aliases
+alias wtc='wt switch --create'
+
 # Checkout from arg; or fuzzy
 gc() {
   if [[ -z "$1" ]]; then
