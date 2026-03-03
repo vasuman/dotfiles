@@ -1,10 +1,11 @@
 # Git aliases
+alias ga='git add .'
 alias gs='git status'
 alias gco='git commit'
 alias gl='git log --oneline -20'
 alias gp='git push'
-alias gpu='git pull'
 alias gpo='git push -u origin HEAD'
+alias gpu='git pull'
 alias gpom='git pull origin main --recurse-submodules'
 alias gcam='git commit -am'
 alias gcnv='git commit --no-verify -am'
