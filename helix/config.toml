@@ -9,6 +9,12 @@ insert = "bar"
 normal = "block"
 select = "underline"
 
+[editor.statusline]
+separator = " »"
+left = ["mode", "spinner", "version-control", "separator", "file-name", "read-only-indicator", "file-modification-indicator"]
+center = []
+right = ["diagnostics", "file-encoding"]
+
 [editor.file-picker]
 hidden = false
 
@@ -16,3 +22,6 @@ hidden = false
 "}" = "goto_next_paragraph"
 "{" = "goto_prev_paragraph"
 "C-]" = "goto_definition"
+
+"C-g" = ":sh gh browse -n %{buffer_name} | pbcopy"
+"C-q" = ":quit"

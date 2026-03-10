@@ -15,7 +15,9 @@ alias ghpr='gh pr create'
 alias ghprf='gh pr create --fill'
 
 # Worktrunk aliases
-alias wtc='wt switch --create'
+alias wts='wt switch'
+alias wtc='wt switch -c'
+alias wtcc='wt switch -x claude -c'
 
 # Checkout from arg; or fuzzy
 gc() {
