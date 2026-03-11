@@ -23,5 +23,5 @@ hidden = false
 "{" = "goto_prev_paragraph"
 "C-]" = "goto_definition"
 
-"C-g" = ":sh gh browse -n %{buffer_name} | pbcopy"
+"C-g" = ":sh gh browse -n --commit %{buffer_name}:%{cursor_line} | pbcopy"
 "C-q" = ":quit"
