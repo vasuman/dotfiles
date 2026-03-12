@@ -23,4 +23,3 @@ link ghostty ~/.config/ghostty
 link gitconfig ~/.gitconfig
 link helix ~/.config/helix
 link worktrunk ~/.config/worktrunk
-link nvim ~/.config/nvim
