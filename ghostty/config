@@ -1,3 +1,5 @@
 keybind = ctrl+cmd+up=toggle_maximize
 theme = dark:Adwaita Dark,light:Adwaita
+font-family = "Agave Nerd Font Mono"
+font-size = 16
 
