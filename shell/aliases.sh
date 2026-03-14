@@ -2,9 +2,9 @@
 alias c='cd'
 alias p='pwd'
 
-alias l='ls'
-alias ll='ls -l'
-alias la='ls -al'
+alias l='ls --color=auto'
+alias ll='ls -l --color=auto'
+alias la='ls -al --color=auto'
 
 alias lg='lazygit'
 alias vim='hx'
