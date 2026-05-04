@@ -18,8 +18,43 @@ link() {
   fi
 }
 
+source_shell_files() {
+  local marker="# dotfiles: source ~/.shell (install.sh)"
+
+  if ! grep -qF "$marker" "${HOME}/.zshrc" 2>/dev/null; then
+    cat >>"${HOME}/.zshrc" <<'EOF'
+
+# dotfiles: source ~/.shell (install.sh)
+if [[ -d "${HOME}/.shell" ]]; then
+  for _dotfiles_shell_file in "${HOME}/.shell"/*.sh(N); do
+    source "$_dotfiles_shell_file"
+  done
+  unset _dotfiles_shell_file
+fi
+EOF
+    echo "updated: ${HOME}/.zshrc"
+  fi
+
+  if ! grep -qF "$marker" "${HOME}/.bashrc" 2>/dev/null; then
+    cat >>"${HOME}/.bashrc" <<'EOF'
+
+# dotfiles: source ~/.shell (install.sh)
+if [[ -d "${HOME}/.shell" ]]; then
+  for _dotfiles_shell_file in "${HOME}/.shell"/*.sh; do
+    [[ -e "$_dotfiles_shell_file" ]] || continue
+    source "$_dotfiles_shell_file"
+  done
+  unset _dotfiles_shell_file
+fi
+EOF
+    echo "updated: ${HOME}/.bashrc"
+  fi
+}
+
 link shell ~/.shell
 link ghostty ~/.config/ghostty
 link gitconfig ~/.gitconfig
 link helix ~/.config/helix
 link worktrunk ~/.config/worktrunk
+
+source_shell_files
