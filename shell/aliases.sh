@@ -7,7 +7,6 @@ alias ll='ls -l --color=auto'
 alias la='ls -al --color=auto'
 
 alias lg='lazygit'
-alias vim='hx'
 
 alias ai='aichat'
 alias aie='aichat --model claude:claude-haiku-4-5-20251001 -e '
